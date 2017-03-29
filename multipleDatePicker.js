@@ -146,7 +146,7 @@
                 '<div class="text-center" ng-repeat="day in daysOfWeek">{{day}}</div>' +
                 '</div>' +
                 '<div class="picker-days-row">' +
-                '<div class="text-center picker-day {{getDayClasses(day)}}" title="{{day.title}}" ng-repeat="day in days" ng-click="toggleDay($event, day)" ng-mouseover="hoverDay($event, day)" ng-mouseleave="dayHover($event, day)" mdp-right-click="rightClicked($event,day)">{{day ? day.mdp.otherMonth && !showDaysOfSurroundingMonths ? \'&nbsp;\' : day.date.format(\'D\') : \'\'}}</div>' +
+                '<div class="text-center picker-day {{getDayClasses(day)}}" ng-style="{{day.style}}" title="{{day.title}}" ng-repeat="day in days" ng-click="toggleDay($event, day)" ng-mouseover="hoverDay($event, day)" ng-mouseleave="dayHover($event, day)" mdp-right-click="rightClicked($event,day)">{{day ? day.mdp.otherMonth && !showDaysOfSurroundingMonths ? \'&nbsp;\' : day.date.format(\'D\') : \'\'}}</div>' +
                 '</div>' +
                 '</div>',
                 link: function (scope) {
@@ -470,6 +470,7 @@
                                     });
                                     day.css = hlDay.length > 0 ? hlDay[0].css : '';
                                     day.title = hlDay.length > 0 ? hlDay[0].title : '';
+                                    day.style = hlDay.length > 0 ? hlDay[0].style : '';
                                 }
                                 day.selectable = !scope.isDayOff(day);
                                 day.mdp.selected = scope.isSelected(day);
